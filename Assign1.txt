@@ -1,0 +1,84 @@
+1.//Reads each and every data inside myShoppingSite array.
+
+function readDataFromJson(myShoppingSite){
+	
+	for(i in myShoppingSite){ // i iterates through every index in array
+		console.log(myShoppingSite[i]); //prints the objects or arrays of objects on console.
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+2.function particularEntryFromJson(myShoppingSite, entryData)
+In this function I need to search an entry by id or name.
+Algo:
+(i)Let we want to search "A1" is present in Mi mobiles array.
+	We hv flag=0
+	function particularEntryFromJson(myShoppingSite, entryData){
+	
+	var flag=0;
+	
+	// i iterates through myShoppingSite array.
+	for(i in myShoppingSite){    
+	
+	// j iterates through myShoppingSite's mobiles array.
+	for(j in myShoppingSite[i].Mobiles){
+	
+	// k iterates through myShoppingSite's mobiles's samumsung array.    
+	for (k in myShoppingSite[i].Mobiles[j].Samsung) 
+	{
+
+		{
+
+		//here we check let say name="Galaxy J7 Next" present or not.
+		if(myShoppingSite[i].Mobiles[j].Samsung[k].name==entryData) 
+			
+			//If yes flag=1 and return found.
+			flag=1; 
+			return "Found";
+		}
+		
+
+			
+	
+	}
+
+	}
+
+	}
+	if(flag==0)  //If not found then flag will be 0 and we return not found.
+		return "Not found";
+		
+}
+console.log(particularEntryFromJson(myShoppingSite,"Galaxy J7 Next"));//function call.
+
+3.
+function getEntrybyIndex(myShoppingSite, indexNumber){
+
+	flag=0;
+	for(i in myShoppingSite) // i iterates through myShoppingSite array. 
+	{
+	  	for(j in myShoppingSite[i].Books) //j iterates through myShoppingSite's Books array.
+		{
+			//If statement to check index is valid or not.
+			if(indexNumber>=0 && indexNumber<=myShoppingSite[i].Books[j].Entrance.length)
+			{
+				flag=1;
+				return myShoppingSite[i].Books[j].Entrance[indexNumber].Author; //Accesing data from that index.
+			}
+		}
+
+	
+	}
+	if(flag==0) //If index is  not valid return invalid index.
+	return "invalid index"
+}
+console.log(getEntrybyIndex(myShoppingSite,0));//function call.
